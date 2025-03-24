@@ -50,19 +50,19 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
             if (username.isEmpty() || phoneNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "@string/complete_info", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.complete_info, Toast.LENGTH_SHORT).show();
             } else if (phoneNum.length() != 11) {
-                Toast.makeText(this, "@string/phone_num_not_valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.phone_num_not_valid, Toast.LENGTH_SHORT).show();
             } else if (flag) {
-                Toast.makeText(this, "@string/phone_num_exist", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.phone_num_exist, Toast.LENGTH_SHORT).show();
             } else if (password.length() < 6) {
-                Toast.makeText(this, "@string/password_length_not_valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.password_length_not_valid, Toast.LENGTH_SHORT).show();
             } else if (!password.equals(confirmPassword)) {
-                Toast.makeText(this, "@string/confirm_password_not_match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.confirm_password_not_match, Toast.LENGTH_SHORT).show();
             } else {
                 user = new User(username, phoneNum, password);
                 mHelper.insert(user);
-                Toast.makeText(this, "@string/register_success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

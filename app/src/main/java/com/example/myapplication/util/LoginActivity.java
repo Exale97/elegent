@@ -41,17 +41,17 @@ public class LoginActivity extends AppCompatActivity {
             String phoneNum = etPhoneNum.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
             if (phoneNum.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "@string/complete_info", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.complete_info, Toast.LENGTH_SHORT).show();
             } else {
                 User user = mHelper.queryByPhoneNum(phoneNum);
                 if (user == null) {
-                    Toast.makeText(this, "@string/phone_num_not_exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.phone_num_not_exist, Toast.LENGTH_SHORT).show();
                 } else if (!user.getPassword().equals(password)) {
-                    Toast.makeText(this, "@string/password_not_match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.password_not_match, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    Toast.makeText(this, "@string/login_success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.login_success, Toast.LENGTH_SHORT).show();
                 }
             }
         });

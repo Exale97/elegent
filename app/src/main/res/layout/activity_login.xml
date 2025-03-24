@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
@@ -23,23 +22,16 @@
         android:padding="10dp"
         android:textColorHint="@color/text_hint" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPassword"
+    <EditText
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
         android:hint="@string/password"
-        android:textColorHint="@color/text_hint"
-        app:endIconMode="password_toggle"
-        app:hintTextColor="@color/text_hint">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_edittext"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/text_hint" />
 
     <TextView
         android:id="@+id/tvForgotPassword"
