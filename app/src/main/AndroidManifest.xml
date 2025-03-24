@@ -13,7 +13,10 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".util.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".util.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".util.RegisterActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".util.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

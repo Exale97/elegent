@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- 主要颜色（按钮、强调色） -->
+    <color name="primary">#00020B</color>
+    <color name="primary_dark">#3578E5</color>
+    <color name="accent">#FFC107</color>
+
+    <!-- 背景色 -->
+    <color name="background_color">#F4F7FC</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- 输入框、分割线 -->
+    <color name="input_background">#E3EAF5</color>
+    <color name="input_border">#767778</color>
+
+    <!-- 文字颜色 -->
+    <color name="text_primary">#F2EAEA</color>
+    <color name="text_secondary">#0F0F0F</color>
+    <color name="text_hint">#454444</color>
+
+    <!-- 错误提示 -->
+    <color name="error">#D32F2F</color>
 </resources>
