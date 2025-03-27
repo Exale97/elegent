@@ -20,4 +20,6 @@
 
     <!-- 错误提示 -->
     <color name="error">#D32F2F</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="error_red">#F44336</color>
 </resources>
