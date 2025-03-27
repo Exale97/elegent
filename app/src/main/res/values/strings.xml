@@ -21,4 +21,7 @@
     <string name="new_password">新密码（至少六位）</string>
     <string name="confirm_new_password">确认新密码</string>
     <string name="submit">提交</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">计划</string>
+    <string name="title_notifications">个人中心</string>
 </resources>
