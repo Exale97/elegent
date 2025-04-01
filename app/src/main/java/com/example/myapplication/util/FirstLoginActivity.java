@@ -3,7 +3,6 @@ package com.example.myapplication.util;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -12,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.util.ui.GLSurface.BubbleRenderer;
+import com.example.myapplication.util.ui.GLSurface.CustomGLSurfaceView;
 
 import java.util.List;
 
 public class FirstLoginActivity extends AppCompatActivity {
 
-    private GLSurfaceView glSurfaceView;
+    private CustomGLSurfaceView glSurfaceView;
     private BubbleRenderer bubbleRenderer;
 
     @Override
@@ -27,11 +27,12 @@ public class FirstLoginActivity extends AppCompatActivity {
 
         FrameLayout bubbleContainer = findViewById(R.id.bubble_container);
 
-        glSurfaceView = new GLSurfaceView(this);
+        glSurfaceView = new CustomGLSurfaceView(this);
         glSurfaceView.setEGLContextClientVersion(2);
 
         bubbleRenderer = new BubbleRenderer();
         glSurfaceView.setRenderer(bubbleRenderer);
+        glSurfaceView.setBubbleRenderer(bubbleRenderer);
 
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
@@ -48,25 +49,6 @@ public class FirstLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent e) {
-        float x = e.getX();
-        float y = e.getY();
-
-        switch (e.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_UP:
-                float normalizedX = (2.0f * x / glSurfaceView.getWidth() - 1.0f);
-                float normalizedY = -(2.0f * y / glSurfaceView.getHeight() - 1.0f);
-
-                if (bubbleRenderer.handleTouchEvent(normalizedX, normalizedY)) {
-                    glSurfaceView.requestRender();
-                }
-                return true;
-        }
-        return super.onTouchEvent(e);
     }
 
     @Override

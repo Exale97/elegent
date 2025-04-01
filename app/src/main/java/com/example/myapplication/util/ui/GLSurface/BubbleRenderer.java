@@ -401,7 +401,6 @@ public class BubbleRenderer implements GLSurfaceView.Renderer {
             float dx = normalizedX - bubble.x;
             float dy = normalizedY - bubble.y;
             float distance = (float) Math.sqrt(dx * dx + dy * dy);
-            // 使用原始半径作为检测区域（可根据需要调整一个很小的容差，比如1.0f）
             if (distance <= bubble.radius) {
                 bubble.selected = !bubble.selected;
                 if (bubble.selected) {
