@@ -22,4 +22,12 @@
     <color name="error">#D32F2F</color>
     <color name="background_white">#FFFFFF</color>
     <color name="error_red">#F44336</color>
+
+     <!-- 气泡颜色池 -->
+    <color name="bubble_color_1">#FFF44336</color>
+    <color name="bubble_color_2">#FFE91E63</color>
+    <color name="bubble_color_3">#FF9C27B0</color>
+    <color name="bubble_color_4">#FF2196F3</color>
+    <color name="bubble_color_5">#FF4CAF50</color>
+
 </resources>

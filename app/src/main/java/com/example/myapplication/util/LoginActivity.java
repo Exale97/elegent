@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (!user.getPassword().equals(password)) {
                     Toast.makeText(this, R.string.password_not_match, Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, FirstLoginActivity.class);
                     startActivity(intent);
                     Toast.makeText(this, R.string.login_success, Toast.LENGTH_SHORT).show();
                 }

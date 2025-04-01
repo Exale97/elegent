@@ -397,13 +397,12 @@ public class BubbleRenderer implements GLSurfaceView.Renderer {
 
     // 修改 handleTouchEvent，使用当前动画半径作为检测依据
     public boolean handleTouchEvent(float normalizedX, float normalizedY) {
-        // 使用原始半径作为检测基础
         for (Bubble bubble : bubbles) {
             float dx = normalizedX - bubble.x;
             float dy = normalizedY - bubble.y;
             float distance = (float) Math.sqrt(dx * dx + dy * dy);
-            // 使用原始半径乘以容差系数进行检测
-            if (distance < bubble.radius * CLICK_TOLERANCE) {
+            // 使用原始半径作为检测区域（可根据需要调整一个很小的容差，比如1.0f）
+            if (distance <= bubble.radius) {
                 bubble.selected = !bubble.selected;
                 if (bubble.selected) {
                     for (int i = 0; i < 3; i++) {

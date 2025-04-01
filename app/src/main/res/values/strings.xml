@@ -24,4 +24,8 @@
     <string name="title_home">首页</string>
     <string name="title_dashboard">计划</string>
     <string name="title_notifications">个人中心</string>
+    <string name="first_choose_domain">选择你喜欢的领域</string>
+    <string name="first_start_journey">开启新的旅途</string>
+    <string name="title_activity_domain_selection">DomainSelectionActivity</string>
+    <string name="choose_domains">你选择的领域</string>
 </resources>
