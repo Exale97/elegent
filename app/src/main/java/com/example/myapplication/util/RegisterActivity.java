@@ -18,21 +18,21 @@ import java.util.List;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUsername, etPhoneNum, etPassword, etConfirmPassword;
-    private Button btnRegister;
-    private TextView tvLogin;
-    private UserDBHelper mHelper;
+    private UserDBHelper userDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        userDBHelper = UserDBHelper.getInstance(this);
+
         etUsername = findViewById(R.id.etUsername);
         etPhoneNum = findViewById(R.id.etPhoneNum);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        btnRegister = findViewById(R.id.btnRegister);
-        tvLogin = findViewById(R.id.tvLogin);
+        Button btnRegister = findViewById(R.id.btnRegister);
+        TextView tvLogin = findViewById(R.id.tvLogin);
 
         btnRegister.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
             String password = etPassword.getText().toString().trim();
             String confirmPassword = etConfirmPassword.getText().toString().trim();
             User user = null;
-            List<User> list = mHelper.queryAll();
+            List<User> list = userDBHelper.queryAll();
 
             boolean flag = false;
             for (User u : list)
@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.confirm_password_not_match, Toast.LENGTH_SHORT).show();
             } else {
                 user = new User(username, phoneNum, password);
-                mHelper.insert(user);
+                userDBHelper.insert(user);
                 Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -73,12 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mHelper = UserDBHelper.getInstance(this);
     }
 
 }

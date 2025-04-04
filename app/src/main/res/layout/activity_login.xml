@@ -40,7 +40,8 @@
         android:layout_gravity="end"
         android:layout_marginTop="10dp"
         android:text="@string/forget_password"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -49,7 +50,8 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/primary"
         android:text="@string/login"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvRegister"
@@ -57,5 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="没有账号？注册"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:textSize="15sp" />
+
 </LinearLayout>

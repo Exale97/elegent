@@ -12,24 +12,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.database.UserDBHelper;
 import com.example.myapplication.entity.User;
+import com.example.myapplication.entity.UserManager;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etPhoneNum, etPassword;
-    private Button btnLogin;
-    private TextView tvRegister, tvForgotPassword;
-    private UserDBHelper mHelper;
+    private UserDBHelper userDBHelper;
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        userDBHelper = UserDBHelper.getInstance(this);
+        userDBHelper.openWriteLink();
+        userDBHelper.openReadLink();
+        if (userDBHelper.queryByPhoneNum("12345678901") == null) userDBHelper.insert(new User("admin", "12345678901", "123456"));
+
+        userManager = UserManager.getInstance();
+
         etPhoneNum = findViewById(R.id.etPhoneNum);
         etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        tvRegister = findViewById(R.id.tvRegister);
-        tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        Button btnLogin = findViewById(R.id.btnLogin);
+        TextView tvRegister = findViewById(R.id.tvRegister);
+        TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
 
         tvRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -43,13 +50,18 @@ public class LoginActivity extends AppCompatActivity {
             if (phoneNum.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, R.string.complete_info, Toast.LENGTH_SHORT).show();
             } else {
-                User user = mHelper.queryByPhoneNum(phoneNum);
+                User user = userDBHelper.queryByPhoneNum(phoneNum);
                 if (user == null) {
                     Toast.makeText(this, R.string.phone_num_not_exist, Toast.LENGTH_SHORT).show();
                 } else if (!user.getPassword().equals(password)) {
                     Toast.makeText(this, R.string.password_not_match, Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, FirstLoginActivity.class);
+                    userManager.setUser(user);
+                    Intent intent;
+//                    if (user.getInterests().isEmpty()) intent = new Intent(LoginActivity.this, SelectFieldActivity.class);
+//                    else intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent = new Intent(LoginActivity.this, SelectFieldActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     Toast.makeText(this, R.string.login_success, Toast.LENGTH_SHORT).show();
                 }
@@ -65,17 +77,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mHelper = UserDBHelper.getInstance(this);
-        mHelper.openWriteLink();
-        mHelper.openReadLink();
-        mHelper.insert(new User("admin", "12345678901", "123456"));
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mHelper.closeLink();
+        userDBHelper.closeLink();
     }
+
 }

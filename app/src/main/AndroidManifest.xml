@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,26 +13,36 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".util.ForgetPasswordActivity"
+            android:name=".util.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".util.LoginActivity"
+            android:name=".util.CommunityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".util.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".util.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".util.SelectFieldActivity"
+            android:exported="true" />
+        <activity
+            android:name=".util.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".util.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".util.FirstLoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".util.MainActivity"
-            android:exported="true" />
-
+            android:name=".util.LoginActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

@@ -16,24 +16,25 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     private EditText etPhoneNum;
     private EditText etPassword;
     private EditText etConfirmPassword;
-    private Button btnSubmit;
-    private UserDBHelper mHelper;
+    private UserDBHelper userDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
+        userDBHelper = UserDBHelper.getInstance(this);
+
         etPhoneNum = findViewById(R.id.etPhoneNum);
         etPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmNewPassword);
-        btnSubmit = findViewById(R.id.btnSubmit);
+        Button btnSubmit = findViewById(R.id.btnSubmit);
 
         btnSubmit.setOnClickListener(v -> {
             String phoneNum = etPhoneNum.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
             String confirmPassword = etConfirmPassword.getText().toString().trim();
-            User user = mHelper.queryByPhoneNum(phoneNum);
+            User user = userDBHelper.queryByPhoneNum(phoneNum);
 
             if (phoneNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, R.string.complete_info, Toast.LENGTH_SHORT).show();
@@ -47,7 +48,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.confirm_password_not_match, Toast.LENGTH_SHORT).show();
             } else {
                 user.setPassword(password);
-                mHelper.update(user);
+                userDBHelper.update(user);
                 Toast.makeText(this, R.string.password_update_success, Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -55,9 +56,4 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mHelper = UserDBHelper.getInstance(this);
-    }
 }

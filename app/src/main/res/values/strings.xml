@@ -21,11 +21,15 @@
     <string name="new_password">新密码（至少六位）</string>
     <string name="confirm_new_password">确认新密码</string>
     <string name="submit">提交</string>
-    <string name="title_home">首页</string>
-    <string name="title_dashboard">计划</string>
-    <string name="title_notifications">个人中心</string>
-    <string name="first_choose_domain">选择你喜欢的领域</string>
-    <string name="first_start_journey">开启新的旅途</string>
-    <string name="title_activity_domain_selection">DomainSelectionActivity</string>
-    <string name="choose_domains">你选择的领域</string>
+    <string name="select_field">选择你的兴趣领域</string>
+    <string name="culture">文化</string>
+    <string name="science">科学</string>
+    <string name="technology">技术</string>
+    <string name="sports">体育</string>
+    <string name="art">艺术</string>
+    <string name="determine_choices">确认选择</string>
+    <string name="jump">跳过</string>
+    <string name="home">主页</string>
+    <string name="community">社区</string>
+    <string name="profile">个人中心</string>
 </resources>

@@ -1,20 +1,29 @@
 package com.example.myapplication.entity;
 
-public class User {
-
+public class UserManager {
+    private static UserManager instance;
     private int id;
     private String name;
     private String phone;
     private String password;
     private String interests;
 
-    public User() {
+    private UserManager() {
     }
 
-    public User(String name, String phone, String password) {
-        this.name = name;
-        this.phone = phone;
-        this.password = password;
+    public static UserManager getInstance() {
+        if (instance == null) {
+            instance = new UserManager();
+        }
+        return instance;
+    }
+
+    public void setUser(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.phone = user.getPhone();
+        this.password = user.getPassword();
+        this.interests = user.getInterests();
     }
 
     public int getId() {

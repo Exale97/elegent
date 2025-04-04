@@ -61,7 +61,8 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/primary"
         android:text="@string/register"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvLogin"
@@ -70,5 +71,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="已有账号？登录"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:textSize="15sp" />
+
 </LinearLayout>
